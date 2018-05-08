@@ -1,6 +1,6 @@
-package com.mrtrollnugnug.bearwithme.client.render;
+package com.bearwithme.entity;
 
-import com.mrtrollnugnug.bearwithme.common.entity.EntityPandaBear;
+import com.bearwithme.entity.EntityGrizzlyBear;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -11,23 +11,23 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderPandaBear extends RenderLiving<EntityPandaBear> {
+public class RenderGrizzlyBear extends RenderLiving<EntityGrizzlyBear> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation("bearwithme", "textures/entity/bear_panda.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation("bearwithme", "textures/entity/bear_grizzly.png");
 
-    public RenderPandaBear (RenderManager renderManager, ModelBase model, float shadowSize) {
+    public RenderGrizzlyBear (RenderManager renderManager, ModelBase model, float shadowSize) {
 
         super(renderManager, model, shadowSize);
     }
 
     @Override
-    protected ResourceLocation getEntityTexture (EntityPandaBear entity) {
+    protected ResourceLocation getEntityTexture (EntityGrizzlyBear entity) {
 
         return TEXTURE;
     }
 
     @Override
-    protected void preRenderCallback (EntityPandaBear entitylivingbaseIn, float partialTickTime) {
+    protected void preRenderCallback (EntityGrizzlyBear entitylivingbaseIn, float partialTickTime) {
 
         GlStateManager.scale(1.2F, 1.2F, 1.2F);
         super.preRenderCallback(entitylivingbaseIn, partialTickTime);

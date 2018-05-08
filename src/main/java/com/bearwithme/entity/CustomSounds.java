@@ -1,27 +1,24 @@
-package com.mrtrollnugnug.bearwithme.client;
+package com.bearwithme.entity;
 
 import net.minecraft.init.Bootstrap;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 
-public class CustomSounds extends SoundEvents {
+public class CustomSounds extends SoundEvents
+{
     // GrizzlyBear Sounds
     public static final SoundEvent GrizzlyBearIdle1;
-
     public static final SoundEvent GrizzlyBearIdle2;
-
     public static final SoundEvent GrizzlyBearIdle3;
 
     // BlackBear Sounds
     public static final SoundEvent BlackBearIdle1;
-
     public static final SoundEvent BlackBearIdle2;
-
     public static final SoundEvent BlackBearIdle3;
 
-    private static SoundEvent getRegisteredSoundEvent (String id) {
-
+    private static SoundEvent getRegisteredSoundEvent (String id)
+    {
         final SoundEvent soundevent = SoundEvent.REGISTRY.getObject(new ResourceLocation(id));
 
         if (soundevent == null)
@@ -30,10 +27,12 @@ public class CustomSounds extends SoundEvents {
             return soundevent;
     }
 
-    static {
+    static
+    {
         if (!Bootstrap.isRegistered())
             throw new RuntimeException("Accessed Sounds before Bootstrap!");
-        else {
+        else
+        {
             GrizzlyBearIdle1 = getRegisteredSoundEvent("ambient.cave");
             GrizzlyBearIdle2 = getRegisteredSoundEvent("ambient.cave");
             GrizzlyBearIdle3 = getRegisteredSoundEvent("ambient.cave");

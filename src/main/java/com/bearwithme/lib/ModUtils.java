@@ -1,9 +1,7 @@
-package com.mrtrollnugnug.bearwithme.lib;
+package com.bearwithme.lib;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.mrtrollnugnug.bearwithme.handler.ContentHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -14,14 +12,10 @@ import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.registries.GameData;
 
 public class ModUtils {
 
-    /**
-     * A list of all items from BearWithMe.
-     */
-    public static final List<Item> ITEMS = new ArrayList<>();
+    
 
     /**
      * A list of all blocks from BearWithMe.
@@ -37,18 +31,6 @@ public class ModUtils {
 	 * A list of all sounds from MoreBears.
 	 */
 	public static final List<SoundEvent> SOUNDEVENTS = new ArrayList<>();
-	
-	public static Item registerItem(Item item, String ID) {
-		if (item.getRegistryName() == null) {
-            item.setRegistryName(ID);
-        }
-
-        item.setUnlocalizedName(Constants.MOD_ID + "." + ID.toLowerCase().replace("_", "."));
-        item.setCreativeTab(ContentHandler.CREATIVE_TAB);
-        GameData.register_impl(item);
-        ITEMS.add(item);
-        return item;
-    }
 
     /**
      * Registers inventory models for a block that uses meta data.
@@ -57,8 +39,8 @@ public class ModUtils {
      * @param variants The names of the models to use in order of meta data.
      */
     @SideOnly(Side.CLIENT)
-    public static void registerBlockInvModel(Block block, String[] variants) {
-
+    public static void registerBlockInvModel(Block block, String[] variants)
+    {
         registerItemInvModel(Item.getItemFromBlock(block), variants);
     }
 
@@ -70,8 +52,8 @@ public class ModUtils {
      * @param variants The names of the models to use in order of meta data.
      */
     @SideOnly(Side.CLIENT)
-    public static void registerBlockInvModel(Block block, String prefix, String[] variants) {
-
+    public static void registerBlockInvModel(Block block, String prefix, String[] variants)
+    {
         registerItemInvModel(Item.getItemFromBlock(block), prefix, variants);
     }
 
@@ -81,8 +63,8 @@ public class ModUtils {
      * @param block The block to register models for.
      */
     @SideOnly(Side.CLIENT)
-    public static void registerBlockInvModel(Block block) {
-
+    public static void registerBlockInvModel(Block block)
+    {
         registerItemInvModel(Item.getItemFromBlock(block), 0);
     }
 
@@ -93,8 +75,8 @@ public class ModUtils {
      * @param meta The meta data to register the model for.
      */
     @SideOnly(Side.CLIENT)
-    public static void registerBlockInvModel(Block block, int meta) {
-
+    public static void registerBlockInvModel(Block block, int meta)
+    {
         registerItemInvModel(Item.getItemFromBlock(block), meta);
     }
 
@@ -106,8 +88,8 @@ public class ModUtils {
      * @param model The name of the model to register.
      */
     @SideOnly(Side.CLIENT)
-    public static void registerItemInvModel(Item item, int meta, String model) {
-
+    public static void registerItemInvModel(Item item, int meta, String model)
+    {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(model, "inventory"));
     }
 
@@ -119,8 +101,8 @@ public class ModUtils {
      * @param variants The names of the models to use, in order of meta data.
      */
     @SideOnly(Side.CLIENT)
-    public static void registerItemInvModel(Item item, String prefix, String[] variants) {
-
+    public static void registerItemInvModel(Item item, String prefix, String[] variants)
+    {
         for (int meta = 0; meta < variants.length; meta++) {
             ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + prefix + "_" + variants[meta], "inventory"));
         }
@@ -133,8 +115,8 @@ public class ModUtils {
      * @param variants The names of the models to use, in order of meta data.
      */
     @SideOnly(Side.CLIENT)
-    public static void registerItemInvModel(Item item, String[] variants) {
-
+    public static void registerItemInvModel(Item item, String[] variants)
+    {
         for (int meta = 0; meta < variants.length; meta++) {
             ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName().getResourceDomain() + ":" + variants[meta], "inventory"));
         }
@@ -146,8 +128,8 @@ public class ModUtils {
      * @param item The item to registers a model for.
      */
     @SideOnly(Side.CLIENT)
-    public static void registerItemInvModel(Item item) {
-
+    public static void registerItemInvModel(Item item)
+    {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
     }
 
@@ -158,8 +140,8 @@ public class ModUtils {
      * @param meta The meta data to register the model for.
      */
     @SideOnly(Side.CLIENT)
-    public static void registerItemInvModel(Item item, int meta) {
-
+    public static void registerItemInvModel(Item item, int meta)
+    {
         ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
     }
 }

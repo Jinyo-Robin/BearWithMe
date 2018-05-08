@@ -1,7 +1,8 @@
-package com.mrtrollnugnug.bearwithme.common.entity;
+package com.bearwithme.entity;
 
-import com.mrtrollnugnug.bearwithme.handler.ContentHandler;
-
+import com.bearwithme.BearWithMe;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityPolarBear;
@@ -10,24 +11,48 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class EntityPandaBear extends EntityPolarBear {
-    public EntityPandaBear (World world) {
+
+    public static final ResourceLocation ENTITIES_PANDA_BEAR = LootTableList.register(new ResourceLocation("bearwithme:entities/panda_bear"));
+
+    public EntityPandaBear (World world)
+    {
         super(world);
         this.setSize(1.1F, 1.4F);
     }
 
+    public static void init()
+    {
+        final int whiteEggColor = 16777215;
+        final int blackEggColor = 0;
+
+        EntityRegistry.registerModEntity(
+            ENTITIES_PANDA_BEAR,
+            EntityPandaBear.class,
+            "pandabear",
+            3,
+            BearWithMe.instance,
+            80,
+            3,
+            true,
+            whiteEggColor,
+            blackEggColor);
+    }
+
     @Override
-    public EntityAgeable createChild (EntityAgeable ageable) {
+    public EntityAgeable createChild (EntityAgeable ageable)
+    {
         return new EntityPandaBear(this.getEntityWorld());
     }
 
     @Override
-    public AxisAlignedBB getEntityBoundingBox () {
+    public AxisAlignedBB getEntityBoundingBox ()
+    {
         return super.getEntityBoundingBox();// .expand(0, 0, 0.4);
     }
 
     @Override
-    protected void applyEntityAttributes () {
-
+    protected void applyEntityAttributes ()
+    {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(25.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(25.0D);
@@ -38,6 +63,6 @@ public class EntityPandaBear extends EntityPolarBear {
     @Override
     protected ResourceLocation getLootTable()
     {
-        return ContentHandler.ENTITIES_PANDA_BEAR;
+        return ENTITIES_PANDA_BEAR;
     }
 }

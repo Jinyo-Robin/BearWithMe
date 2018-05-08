@@ -1,9 +1,9 @@
-package com.mrtrollnugnug.bearwithme;
+package com.bearwithme;
 
-import com.mrtrollnugnug.bearwithme.common.CommonProxy;
-import com.mrtrollnugnug.bearwithme.handler.ConfigurationHandler;
-import com.mrtrollnugnug.bearwithme.handler.ContentHandler;
-import com.mrtrollnugnug.bearwithme.lib.Constants;
+import com.bearwithme.proxy.CommonProxy;
+import com.bearwithme.lib.Constants;
+import com.bearwithme.handler.ConfigurationHandler;
+import com.bearwithme.lib.ContentHandler;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;

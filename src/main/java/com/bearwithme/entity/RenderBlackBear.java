@@ -1,6 +1,6 @@
-package com.mrtrollnugnug.bearwithme.client.render;
+package com.bearwithme.entity;
 
-import com.mrtrollnugnug.bearwithme.common.entity.EntityBlackBear;
+import com.bearwithme.entity.EntityBlackBear;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
